@@ -54,3 +54,8 @@ Phase 0 complete: protocols, phase logging, build governance locked
 - Local `.env` file created (not committed).
 - Temporary SQLite DATABASE_URL added for Phase 2 runtime verification only.
 - Prisma client generation and DB initialization pending explicit approval.
+## 2026-01-29 — Phase 3 (P3-01) SQL Authored
+
+- `db/sql/008_campaign_expenses.sql` authored and verified
+- No database execution performed
+- gen_random_uuid dependency noted; pgcrypto check deferred until DB init

@@ -1018,8 +1018,57 @@ CREATE INDEX IF NOT EXISTS idx_campaign_expenses_source ON campaign.expenses(sou
 
 **Commit**
 - `chore(phase-3): expenses sql`
+# PHASE 3 — Expenses + Spending Drilldowns (MICRO+)
+**Build Status:** NOT_STARTED  
+**Guard Mode:** STRICT (plan_guard must remain green at every step)
 
 ---
+
+## Phase 3 outcome
+Candidate can:
+1) Enter an expense via a 5-step wizard  
+2) Review/edit expenses  
+3) View an **Analysis** page with drilldowns:
+   - by month
+   - by category
+   - by type
+   - by payee
+   - largest line items
+
+System can:
+- Accept expenses from Travel commits (Phase 4)
+- Enforce **read-only** behavior in Expenses UI for travel-sourced rows
+
+---
+
+## Phase 3 operating rules (non-negotiable)
+- Execute **one P3 item at a time**
+- Only touch files explicitly listed in that P3 item
+- Run `node scripts/plan_guard.js`:
+  - before starting each P3 item
+  - after completing each P3 item
+- `.env` is local-only and never committed
+- If runtime is blocked prior to P3-01, that is acceptable
+
+---
+
+## P3-01 — SQL: expenses + expenditure_returns (full DDL)
+**Status:** NOT_STARTED
+
+### Files
+- `db/sql/008_campaign_expenses.sql`
+
+### Steps
+1) Run plan guard (must be clean)
+   ```bash
+   node scripts/plan_guard.js
+## P3-01 — SQL: expenses + expenditure_returns (full DDL)
+**Status:** FILE_AUTHORED (execution deferred)
+
+--**Notes:**
+- SQL file authored and verified on disk
+- Execution deferred until database initialization (P3-01 execution step)
+-
 
 ## P3-02 — Prisma models: CampaignExpense + CampaignExpenditureReturn (exact blocks)
 **Status:** NOT_STARTED
