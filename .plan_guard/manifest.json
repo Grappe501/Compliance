@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-01-29T15:41:03.746Z",
+  "generatedAt": "2026-01-29T18:40:31.135Z",
   "repoRoot": "C:\\dev\\Compliance",
   "plan": "master_build.md",
-  "planHash": "474c4d1f72ab64fda9db0595a2f1241521c90b2ded039a1727fb28b301ca6d0f",
+  "planHash": "3aa6e3be9b3ef7c470e85aa52a06e75138d02dc420fb17ce61a5c0c950db22cf",
   "phaseFilter": null,
   "requiredPaths": [
     ".plan_guard/manifest.json",

@@ -82,3 +82,75 @@ model CampaignContribution {
   @@index([status], map: "idx_campaign_contribution_status")
   @@index([contributorId], map: "idx_campaign_contribution_contributor_id")
 }
+
+//
+// Phase 3: Expenses (all new Phase 3 models use @@schema("campaign"))
+//
+
+model CampaignExpense {
+  id                    String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  externalExpenditureId String   @unique @map("external_expenditure_id")
+
+  // Optional link to a contact/payee record in the app layer (kept nullable for final-product flexibility)
+  payeeContactId        String?  @map("payee_contact_id") @db.Uuid
+
+  payeeName             String?  @map("payee_name")
+
+  address1              String?
+  address2              String?
+  city                  String?
+  state                 String?
+  zip                   String?
+
+  amountCents           Int      @map("amount_cents")
+  spentAt               DateTime @map("spent_at") @db.Date
+
+  // Classification fields (string enums enforced in app logic for now)
+  expenseCategory       String   @default("OTHER") @map("expense_category")
+  expenseType           String   @default("OPERATING") @map("expense_type")
+
+  // Required when category/type indicates "OTHER" (enforced by validator)
+  otherDescription      String?  @map("other_description")
+
+  memo                  String?
+
+  // System/source locking (e.g., travel-generated expenses should be read-only in UI/API)
+  source                String   @default("MANUAL")
+
+  status                String   @default("DRAFT")
+  validationErrors      Json     @default("[]") @map("validation_errors")
+
+  createdAt             DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt             DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+
+  expenditureReturns    CampaignExpenditureReturn[]
+
+  @@schema("campaign")
+  @@map("campaign_expense")
+  @@index([spentAt], map: "idx_campaign_expense_spent_at")
+  @@index([status], map: "idx_campaign_expense_status")
+  @@index([expenseCategory], map: "idx_campaign_expense_category")
+  @@index([expenseType], map: "idx_campaign_expense_type")
+  @@index([payeeContactId], map: "idx_campaign_expense_payee_contact_id")
+}
+
+model CampaignExpenditureReturn {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  expenseId   String   @map("expense_id") @db.Uuid
+  expense     CampaignExpense @relation(fields: [expenseId], references: [id], onDelete: Cascade)
+
+  amountCents Int      @map("amount_cents")
+  returnedAt  DateTime @map("returned_at") @db.Date
+
+  memo        String?
+
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+
+  @@schema("campaign")
+  @@map("campaign_expenditure_return")
+  @@index([expenseId], map: "idx_campaign_expenditure_return_expense_id")
+  @@index([returnedAt], map: "idx_campaign_expenditure_return_returned_at")
+}
