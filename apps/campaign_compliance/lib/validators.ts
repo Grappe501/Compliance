@@ -1,17 +1,16 @@
-@'
-/**
- * P3-04 — Expense validator + status transitions
- * This file will also host shared validator helpers if needed.
- */
+// apps/campaign_compliance/lib/validators.ts
+import type { ContributionDraft, ValidationIssue } from "./sos-schema";
+import { validateContribution } from "./validators/contributions";
 
-export type FieldError = { field: string; message: string };
+export type ValidationResult = {
+  ok: boolean;
+  issues: ValidationIssue[];
+};
 
-export function validateExpense(
-  expense: any,
-  contact: any | null,
-  settings: any | null
-): { ok: boolean; errors: FieldError[] } {
-  // TODO(P3-04): implement exact rules from master_build.md
-  return { ok: true, errors: [] };
+export function runContributionValidation(d: ContributionDraft): ValidationResult {
+  const issues = validateContribution(d);
+  return {
+    ok: issues.length === 0,
+    issues,
+  };
 }
-'@ | Set-Content -Encoding UTF8 "apps/campaign_compliance/lib/validators.ts"
