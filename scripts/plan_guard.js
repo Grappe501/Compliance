@@ -101,6 +101,12 @@ function shouldIgnoreRelPath(relPath) {
     "yarn.lock",
     ".DS_Store",
     "Thumbs.db",
+
+    // Local-only environment files (explicitly allowed; never part of plan)
+    ".env",
+    ".env.local",
+    ".env.development",
+    ".env.production",
   ]);
 
   if (ignoredFiles.has(base)) return true;
