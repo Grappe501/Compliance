@@ -1,0 +1,38 @@
+// db/prisma/schema.prisma
+// Phase 1 baseline Prisma schema
+// Supports multi-schema Postgres with campaign isolation
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+
+  // Required by master_build.md
+  schemas  = ["public", "private", "campaign"]
+}
+
+// ===============================
+// CAMPAIGN SETTINGS (singleton)
+// ===============================
+model CampaignSettings {
+  id                  String   @id
+  sosFilingEntityId    String?  @map("sos_filing_entity_id")
+  sosFilingEntityName  String?  @map("sos_filing_entity_name")
+
+  timezone             String   @default("America/Chicago")
+  defaultElectionType  String?  @map("default_election_type")
+  mileageRate          Decimal  @default(0.70) @map("mileage_rate") @db.Numeric(6, 2)
+
+  brandPrimary         String?  @map("brand_primary")
+  brandSecondary       String?  @map("brand_secondary")
+  brandLogoUrl         String?  @map("brand_logo_url")
+
+  createdAt            DateTime @default(now()) @map("created_at")
+  updatedAt            DateTime @updatedAt @map("updated_at")
+
+  @@map("settings")
+  @@schema("campaign")
+}

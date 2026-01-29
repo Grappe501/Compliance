@@ -1,0 +1,311 @@
+{
+  "phases": [
+    {
+      "title": "PHASE 0 — Lock architecture + SOS contract",
+      "buildStatus": "DONE",
+      "steps": [
+        {
+          "id": "P0-01",
+          "title": "Confirm parallel build conventions",
+          "status": "DONE"
+        },
+        {
+          "id": "P0-02",
+          "title": "Lock SOS column arrays",
+          "status": "DONE"
+        }
+      ]
+    },
+    {
+      "title": "PHASE 1 — App shell + DB wiring + progress map (MICRO)",
+      "buildStatus": "NOT_STARTED",
+      "steps": [
+        {
+          "id": "P1-01",
+          "title": "Create app skeleton",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P1-02",
+          "title": "Mirror baseline conventions from public_site",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P1-03",
+          "title": "Create module routes (empty shells)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P1-04",
+          "title": "Build core UI components (no design drift)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P1-05",
+          "title": "Minimal Home page (exact copy)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P1-06",
+          "title": "Enable Postgres schema `campaign` in Prisma datasource",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P1-07",
+          "title": "Create campaign schema SQL (idempotent)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P1-08",
+          "title": "Add Prisma model CampaignSettings",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P1-09",
+          "title": "Module-local Prisma client wrapper + env helper",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P1-10",
+          "title": "Settings API + page",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P1-11",
+          "title": "Build Map JSON generator (ties to this file)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P1-12",
+          "title": "Build Map page UI",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P1-13",
+          "title": "Phase 1 doc update (required)",
+          "status": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "title": "PHASE 2 — Contributions + Contacts (MICRO+ / NO-GUESSING)",
+      "buildStatus": "NOT_STARTED",
+      "steps": [
+        {
+          "id": "P2-01",
+          "title": "SQL DDL: contacts + contributions + contribution_returns (COPY/PASTE)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P2-02",
+          "title": "Prisma models (exact blocks)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P2-03",
+          "title": "SOS schema module + dropdown sources (single source of truth)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P2-04",
+          "title": "Contacts API (search + create) + ContactPicker",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P2-05",
+          "title": "Contributions API + ExternalContributionID generator",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P2-06",
+          "title": "Validation engine: contributions",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P2-07",
+          "title": "Contribution wizard UI (5-step, minimal)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P2-08",
+          "title": "Contributions list + detail/edit",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P2-09",
+          "title": "Phase 2 doc update",
+          "status": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "title": "PHASE 3 — Expenses + Spending Drilldowns (MICRO+)",
+      "buildStatus": "NOT_STARTED",
+      "steps": [
+        {
+          "id": "P3-01",
+          "title": "SQL: expenses + expenditure_returns (full DDL)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P3-02",
+          "title": "Prisma models: CampaignExpense + CampaignExpenditureReturn (exact blocks)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P3-03",
+          "title": "Expenses API (create/list/update) + ExternalExpenditureID generator",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P3-04",
+          "title": "Expense validator + status transitions (exact rules)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P3-05",
+          "title": "Expense UI: wizard + recent list + detail",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P3-06",
+          "title": "Spending Analysis Drilldown page (full spec)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P3-07",
+          "title": "Phase 3 doc update",
+          "status": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "title": "PHASE 4 — Travel log + timeline + commit (MICRO+)",
+      "buildStatus": "NOT_STARTED",
+      "steps": [
+        {
+          "id": "P4-01",
+          "title": "SQL: travel_trips (full DDL)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P4-02",
+          "title": "Prisma model: CampaignTravelTrip",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P4-03",
+          "title": "Travel API + commit endpoint (exact)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P4-04",
+          "title": "Travel validation",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P4-05",
+          "title": "Travel hub page",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P4-06",
+          "title": "Travel intake page (live calc; single screen)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P4-07",
+          "title": "Travel timeline page (beautiful chronological)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P4-08",
+          "title": "Commit mapping verification (unit tests)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P4-09",
+          "title": "Phase 4 doc update",
+          "status": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "title": "PHASE 5 — Filing prep + HTML + CSV export (MICRO+)",
+      "buildStatus": "NOT_STARTED",
+      "steps": [
+        {
+          "id": "P5-01",
+          "title": "SQL: exports + audit_log (full DDL)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P5-02",
+          "title": "Preflight engine (blocked queue) (exact algorithm)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P5-03",
+          "title": "Filing page UI (linear flow)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P5-04",
+          "title": "CSV exporters (exact columns/order + mapping table)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P5-05",
+          "title": "HTML final review generator (must match dataset exactly)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P5-06",
+          "title": "Export logging + hash (exact)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P5-07",
+          "title": "Phase 5 doc update",
+          "status": "NOT_STARTED"
+        }
+      ]
+    },
+    {
+      "title": "PHASE 6 — Hardening + packaging (MICRO+)",
+      "buildStatus": "NOT_STARTED",
+      "steps": [
+        {
+          "id": "P6-01",
+          "title": "Audit helper + wiring (exact)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P6-02",
+          "title": "Confirmation prompts for commit/export (exact UX)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P6-03",
+          "title": "Empty states + friendly errors (every page)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P6-04",
+          "title": "Performance pass (pagination + indexes)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P6-05",
+          "title": "Packaging docs for sale (install + env + schema)",
+          "status": "NOT_STARTED"
+        },
+        {
+          "id": "P6-06",
+          "title": "Finalize master_build statuses",
+          "status": "NOT_STARTED"
+        }
+      ]
+    }
+  ]
+}

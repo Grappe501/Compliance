@@ -7,7 +7,7 @@
 
 ---
 ## Blueprints zip alignment notes (confirmed)
-- The provided Blueprints zip contains a monorepo skeleton with `apps/public_site/` in a Next.js App Router layout (`apps/campaign_compliance/app/`, `apps/campaign_compliance/components/`, `apps/campaign_compliance/lib/`).
+- The provided Blueprints zip contains a monorepo skeleton with `apps/public_site/` in a Next.js App Router layout (`app/`, `components/`, `lib/`).
 - Several implementation files in the zip are **0 bytes** (placeholders), so we cannot rely on them for DB/Prisma specifics.
 - Therefore this build **standardizes** on: Next.js 14 + Tailwind + Postgres + Prisma, while keeping all campaign tables isolated in Postgres schema `campaign`.
 
@@ -15,31 +15,6 @@
 
 
 ---
-
-
-## REQUIRED PATHS (plan_guard)
-
-The plan guard enforces that required files/folders exist exactly as referenced in this plan.
-
-In addition to the build-step paths listed throughout the phases, the following **create-next-app baseline artifacts** are treated as **required** (they are expected to exist in a standard Next.js 14 App Router + Tailwind scaffold under `apps/campaign_compliance/` and must not be flagged as drift):
-
-- `apps/campaign_compliance/.eslintrc.json`
-- `apps/campaign_compliance/.gitignore`
-- `apps/campaign_compliance/app/favicon.ico`
-- `apps/campaign_compliance/app/fonts/GeistMonoVF.woff`
-- `apps/campaign_compliance/app/fonts/GeistVF.woff`
-- `apps/campaign_compliance/app/globals.css`
-- `apps/campaign_compliance/app/layout.tsx`
-- `apps/campaign_compliance/components/NavBar.tsx`
-- `apps/campaign_compliance/components/PageShell.tsx`
-- `apps/campaign_compliance/next-env.d.ts`
-- `apps/campaign_compliance/next.config.mjs`
-- `apps/campaign_compliance/postcss.config.mjs`
-- `apps/campaign_compliance/tailwind.config.ts`
-- `apps/campaign_compliance/tsconfig.json`
-
-> Note: If any of these are intentionally removed or renamed, the plan must be updated first (otherwise plan_guard will correctly report drift).
-
 
 ## Locked SOS export schema (DO NOT EDIT)
 These arrays are the single source of truth for CSV column names and order.
@@ -169,68 +144,11 @@ At the end of every step:
 
 ---
 
-
-# PHASE G — Governance + Plan Guard (FOUNDATION)
-**Build Status:** IN_PROGRESS
-
-## Phase G outcome
-The repo can audit itself against the canonical plan and enforce “no drift” rules.
-
-## PG-01 — Plan Guard script exists and runs
-**Status:** DONE
-
-**Files**
-- `scripts/plan_guard.js`
-
-**Acceptance**
-- `node scripts/plan_guard.js` runs and reports:
-  - missing required paths (OFF-PLAN)
-  - extra unplanned paths (DRIFT)
-  - manifest written to `.plan_guard/manifest.json`
-
-**Commit**
-- `chore(governance): plan_guard`
-
----
-
-## PG-02 — Protocols + Phase checklists exist
-**Status:** DONE
-
-**Files**
-- `PROTOCOLS.md`
-- `PHASE_1_FILELIST.md`
-
-**Acceptance**
-- Files exist at repo root and define “full-file only / one file at a time / no drift” rules.
-
-**Commit**
-- `docs(governance): protocols + phase checklists`
-
----
-
-## PG-03 — Plan Guard alignment: required baseline artifacts + drift resolution
-**Status:** IN_PROGRESS
-
-**Goal**
-- Update the plan’s “REQUIRED PATHS (plan_guard)” so create-next-app baseline artifacts are not treated as drift.
-- Remove or document any remaining unplanned files under watched roots.
-
-**Acceptance**
-- `node scripts/plan_guard.js` reports:
-  - ✅ none missing required paths
-  - ✅ no drift OR drift explicitly documented in this plan
-
-**Commit**
-- `chore(governance): plan_guard alignment`
-
-
----
-
 # PHASE 1 — App shell + DB wiring + progress map (MICRO)
-**Build Status:** IN_PROGRESS
+**Build Status:** NOT_STARTED
 
 ## P1-01 — Create app skeleton
-**Status:** DONE  
+**Status:** NOT_STARTED  
 **Do**
 1) From repo root:
    - `npx create-next-app@14 apps/campaign_compliance --ts --tailwind --eslint --app --src-dir=false --import-alias "@/*"`
@@ -245,13 +163,13 @@ The repo can audit itself against the canonical plan and enforce “no drift” 
 ---
 
 ## P1-02 — Mirror baseline conventions from public_site
-**Status:** DONE  
+**Status:** NOT_STARTED  
 **Do**
 1) Copy these files from `apps/public_site` into `apps/campaign_compliance` (adjust paths as needed):
    - `tailwind.config.ts`
    - `postcss.config.mjs`
    - `tsconfig.json` (keep `@/*` alias)
-2) Ensure `apps/campaign_compliance/app/globals.css` includes Tailwind directives (same as public_site).
+2) Ensure `app/globals.css` includes Tailwind directives (same as public_site).
 
 **Acceptance**
 - Tailwind classes render (e.g., add a colored div and see it render).
@@ -283,12 +201,12 @@ The repo can audit itself against the canonical plan and enforce “no drift” 
 ## P1-04 — Build core UI components (no design drift)
 **Status:** NOT_STARTED  
 **Create**
-- `apps/campaign_compliance/components/PageShell.tsx`
-- `apps/campaign_compliance/components/NavBar.tsx`
-- `apps/campaign_compliance/components/Button.tsx` (primary/secondary)
-- `apps/campaign_compliance/components/Field.tsx` (label + helper + error)
-- `apps/campaign_compliance/components/PrimaryActionCard.tsx`
-- `apps/campaign_compliance/components/StatusPill.tsx`
+- `components/PageShell.tsx`
+- `components/NavBar.tsx`
+- `components/Button.tsx` (primary/secondary)
+- `components/Field.tsx` (label + helper + error)
+- `components/PrimaryActionCard.tsx`
+- `components/StatusPill.tsx`
 
 **Exact UX rules**
 - NavBar is always visible and quiet.
@@ -338,7 +256,7 @@ The repo can audit itself against the canonical plan and enforce “no drift” 
 ---
 
 ## P1-07 — Create campaign schema SQL (idempotent)
-**Status:** DONE  
+**Status:** NOT_STARTED  
 **Create**
 - `db/sql/006_campaign_schema.sql`
 
@@ -411,12 +329,12 @@ The repo can audit itself against the canonical plan and enforce “no drift” 
 ## P1-10 — Settings API + page
 **Status:** NOT_STARTED  
 **Create API**
-- `apps/campaign_compliance/app/api/settings/route.ts`
+- `app/api/settings/route.ts`
   - GET: `findUnique("singleton")` else create default row
   - POST: upsert singleton
 
 **Create page**
-- `apps/campaign_compliance/app/settings/page.tsx`
+- `app/settings/page.tsx`
 Fields:
 - Filing Entity Name
 - Filing Entity ID
@@ -441,7 +359,7 @@ Fields:
 **Parsing rules**
 - Phase header: `# PHASE`
 - Step header: `## P`
-- Step status line: `**Status:** NOT_STARTED`
+- Step status line: `**Status:** X`
 - Build status line: `**Build Status:** X`
 
 **Output JSON**
@@ -460,7 +378,7 @@ Fields:
 ## P1-12 — Build Map page UI
 **Status:** NOT_STARTED  
 **Create**
-- `apps/campaign_compliance/app/build-map/page.tsx`
+- `app/build-map/page.tsx`
 - Fetch `/build-status.json` and render:
   - phase accordion
   - step list with StatusPill
@@ -759,7 +677,7 @@ model CampaignContributionReturn {
     - org: require orgName
 
 **Create component**
-- `apps/campaign_compliance/components/ContactPicker.tsx`
+- `components/ContactPicker.tsx`
   - input field with debounce search (300ms)
   - dropdown list
   - “Create new” inline panel with:
@@ -779,10 +697,10 @@ model CampaignContributionReturn {
 **Status:** NOT_STARTED
 
 **Create routes**
-- `apps/campaign_compliance/app/api/contributions/route.ts`:
+- `app/api/contributions/route.ts`:
   - GET recent: `?limit=20`
   - POST create
-- `apps/campaign_compliance/app/api/contributions/[id]/route.ts`:
+- `app/api/contributions/[id]/route.ts`:
   - GET by id
   - PUT update (must not allow changing externalContributionId)
 
@@ -837,8 +755,8 @@ type ValidationResult = {
 **Status:** NOT_STARTED
 
 **Implement**
-- `apps/campaign_compliance/app/contributions/new/page.tsx`
-- `apps/campaign_compliance/components/wizard/WizardFrame.tsx` (shared for expenses later)
+- `app/contributions/new/page.tsx`
+- `components/wizard/WizardFrame.tsx` (shared for expenses later)
 
 **Steps**
 1) Amount + Date
@@ -860,13 +778,13 @@ type ValidationResult = {
 **Status:** NOT_STARTED
 
 **List page**
-- `apps/campaign_compliance/app/contributions/page.tsx`
+- `app/contributions/page.tsx`
   - shows last 20 contributions
   - columns: date | name | amount | status pill
   - clicking row opens detail
 
 **Detail page**
-- `apps/campaign_compliance/app/contributions/[id]/page.tsx`
+- `app/contributions/[id]/page.tsx`
   - read-only view + “Edit” toggle
   - Save Draft / Save Ready buttons
   - validation checklist displayed
@@ -1167,9 +1085,9 @@ Body:
 **Status:** NOT_STARTED
 
 ### Files
-- `apps/campaign_compliance/app/expenses/page.tsx` (Recent 20)
-- `apps/campaign_compliance/app/expenses/new/page.tsx` (Wizard)
-- `apps/campaign_compliance/app/expenses/[id]/page.tsx` (Detail/Edit)
+- `app/expenses/page.tsx` (Recent 20)
+- `app/expenses/new/page.tsx` (Wizard)
+- `app/expenses/[id]/page.tsx` (Detail/Edit)
 
 ### Expenses home UI (minimal)
 - Primary button: Add Expense
@@ -1197,9 +1115,9 @@ Body:
 **Status:** NOT_STARTED
 
 ### Files
-- `apps/campaign_compliance/app/expenses/analysis/page.tsx`
-- `apps/campaign_compliance/app/api/expenses/analysis/route.ts`
-- `apps/campaign_compliance/lib/analysis.ts` (shared calculations)
+- `app/expenses/analysis/page.tsx`
+- `app/api/expenses/analysis/route.ts`
+- `lib/analysis.ts` (shared calculations)
 
 ### API request
 `GET /api/expenses/analysis?start=YYYY-MM-DD&end=YYYY-MM-DD`
@@ -1383,9 +1301,9 @@ model CampaignTravelTrip {
 **Status:** NOT_STARTED
 
 ### Files
-- `apps/campaign_compliance/app/api/travel/route.ts` (GET list, POST create)
-- `apps/campaign_compliance/app/api/travel/[id]/route.ts` (GET/PUT)
-- `apps/campaign_compliance/app/api/travel/[id]/commit/route.ts` (POST commit)
+- `app/api/travel/route.ts` (GET list, POST create)
+- `app/api/travel/[id]/route.ts` (GET/PUT)
+- `app/api/travel/[id]/commit/route.ts` (POST commit)
 
 ### Create rules
 - Calculate:
@@ -1448,7 +1366,7 @@ COMMITTED requires:
 **Status:** NOT_STARTED
 
 **File**
-- `apps/campaign_compliance/app/travel/page.tsx`
+- `app/travel/page.tsx`
 
 Must show:
 - Primary: Add Trip → `/travel/new`
@@ -1468,7 +1386,7 @@ Must show:
 **Status:** NOT_STARTED
 
 **File**
-- `apps/campaign_compliance/app/travel/new/page.tsx`
+- `app/travel/new/page.tsx`
 
 Fields:
 - trip_date (default today)
@@ -1493,7 +1411,7 @@ Buttons:
 **Status:** NOT_STARTED
 
 **File**
-- `apps/campaign_compliance/app/travel/timeline/page.tsx`
+- `app/travel/timeline/page.tsx`
 
 Must include:
 - Date range filter
@@ -1605,8 +1523,8 @@ CREATE INDEX IF NOT EXISTS idx_campaign_audit_entity ON campaign.audit_log(entit
 **Status:** NOT_STARTED
 
 ### Files
-- `apps/campaign_compliance/lib/preflight.ts`
-- `apps/campaign_compliance/app/api/filing/preflight/route.ts`
+- `lib/preflight.ts`
+- `app/api/filing/preflight/route.ts`
 
 ### Inputs
 ```json
@@ -1651,7 +1569,7 @@ CREATE INDEX IF NOT EXISTS idx_campaign_audit_entity ON campaign.audit_log(entit
 **Status:** NOT_STARTED
 
 ### File
-- `apps/campaign_compliance/app/filing/page.tsx`
+- `app/filing/page.tsx`
 
 ### Sections (must appear in this order)
 1) Date Range
@@ -1673,10 +1591,10 @@ CREATE INDEX IF NOT EXISTS idx_campaign_audit_entity ON campaign.audit_log(entit
 **Status:** NOT_STARTED
 
 ### Files
-- `apps/campaign_compliance/lib/export/csv.ts`
-- `apps/campaign_compliance/lib/export/mappers.ts`
-- `apps/campaign_compliance/app/api/filing/export/contributions/route.ts`
-- `apps/campaign_compliance/app/api/filing/export/expenditures/route.ts`
+- `lib/export/csv.ts`
+- `lib/export/mappers.ts`
+- `app/api/filing/export/contributions/route.ts`
+- `app/api/filing/export/expenditures/route.ts`
 
 ### Canonical mapping rule
 - Exporters must use the locked arrays at top of this file to:
@@ -1721,8 +1639,8 @@ const contributionMap = {
 **Status:** NOT_STARTED
 
 ### Files
-- `apps/campaign_compliance/lib/export/html.ts`
-- `apps/campaign_compliance/app/api/filing/review/route.ts`
+- `lib/export/html.ts`
+- `app/api/filing/review/route.ts`
 
 ### Rule
 - The same query and filter used for CSV must be used for HTML.
@@ -1745,7 +1663,7 @@ const contributionMap = {
 **Status:** NOT_STARTED
 
 ### Files
-- `apps/campaign_compliance/lib/export/hash.ts`
+- `lib/export/hash.ts`
 - integrate into export endpoints
 
 ### Hash algorithm
@@ -1787,7 +1705,7 @@ Commit: `docs(phase-5): status updates`
 **Status:** NOT_STARTED
 
 ### Files
-- `apps/campaign_compliance/lib/audit.ts`
+- `lib/audit.ts`
 - Wire into:
   - settings save
   - contribution create/update
@@ -1810,7 +1728,7 @@ Commit: `docs(phase-5): status updates`
 **Status:** NOT_STARTED
 
 ### Add confirm modal component
-- `apps/campaign_compliance/components/ConfirmDialog.tsx`
+- `components/ConfirmDialog.tsx`
 
 ### Required confirmations
 - Travel commit:

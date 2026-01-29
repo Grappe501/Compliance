@@ -1,0 +1,19 @@
+{
+    "name": "compliance-root",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "plan:report": "node scripts/plan_guard.js --plan ./master_build.md --repo . --report",
+      "plan:create": "node scripts/plan_guard.js --plan ./master_build.md --repo . --create --report",
+      "plan:phase1:report": "node scripts/plan_guard.js --plan ./master_build.md --repo . --phase 1 --report",
+      "plan:phase1:create": "node scripts/plan_guard.js --plan ./master_build.md --repo . --phase 1 --create --report",
+      "plan:snap:phase0": "node scripts/plan_guard.js --plan ./master_build.md --repo . --snapshot phase-0 --report",
+      "plan:snap:phase1": "node scripts/plan_guard.js --plan ./master_build.md --repo . --snapshot phase-1 --report",
+  
+      "app:dev": "npm --prefix apps/campaign_compliance run dev",
+      "app:build": "npm --prefix apps/campaign_compliance run build",
+      "app:lint": "npm --prefix apps/campaign_compliance run lint",
+      "app:start": "npm --prefix apps/campaign_compliance run start"
+    }
+  }
+  
