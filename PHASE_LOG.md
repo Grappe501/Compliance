@@ -23,7 +23,7 @@ If a phase is not recorded here, it is **not considered complete**.
 
 ---
 
-## PHASE TEMPLATE (COPY FOR EACH NEW PHASE)
+## PHASE TEMPLATE (REFERENCE ONLY — DO NOT EDIT)
 
 ```md
 ## Phase X — <Phase Name or Short Description>
@@ -46,16 +46,125 @@ If a phase is not recorded here, it is **not considered complete**.
 
 **Notes:**  
 -
-Phase 0 complete: protocols, phase logging, build governance locked
-## 2026-01-29 — Phase 2 Runtime Configuration
+```
 
-- Phase 2 implementation complete.
-- Application boot blocked intentionally by missing DATABASE_URL.
-- Local `.env` file created (not committed).
-- Temporary SQLite DATABASE_URL added for Phase 2 runtime verification only.
-- Prisma client generation and DB initialization pending explicit approval.
-## 2026-01-29 — Phase 3 (P3-01) SQL Authored
+---
 
-- `db/sql/008_campaign_expenses.sql` authored and verified
-- No database execution performed
-- gen_random_uuid dependency noted; pgcrypto check deferred until DB init
+## Phase 0 — Governance & Build Protocols
+
+**Phase Start Time:** 2026-01-28  
+**Phase End Time:** 2026-01-28  
+
+**Scope Summary:**  
+- Locked development protocols and governance rules
+- Established plan_guard enforcement model
+- Created authoritative build planning documents
+
+**Primary Files Built:**  
+- `PROTOCOLS.md`  
+- `PHASE_LOG.md`  
+- `master_build.md`  
+- `.plan_guard/*`
+
+**Git Commit / Tag:**  
+- Initial governance lock-in commit
+
+**ZIP Artifact:**  
+- Location: `C:\dev\`
+- Filename: `campaign_compliance_phase-0.zip`
+
+**Notes:**  
+- Phase 0 complete: protocols, phase logging, and build governance locked.
+
+---
+
+## Phase 2 — Contributions & Contacts (Implementation)
+
+**Phase Start Time:** 2026-01-29  
+**Phase End Time:** *Not formally closed*  
+
+**Scope Summary:**  
+- Implemented contribution intake, validation, and contact linkage
+- Built SOS schemas, dropdowns, and contribution APIs
+- Deferred runtime DB execution intentionally
+
+**Primary Files Built:**  
+- `apps/campaign_compliance/app/api/contributions/*`
+- `apps/campaign_compliance/app/contributions/*`
+- `apps/campaign_compliance/lib/validators/contributions.ts`
+- `db/prisma/schema.prisma` (Phase 2 models)
+
+**Git Commit / Tag:**  
+- Multiple commits (see repository history)
+
+**ZIP Artifact:**  
+- Location: `C:\dev\`
+- Filename: `campaign_compliance_phase-2-pre-runtime.zip`
+
+**Notes:**  
+- Application boot blocked intentionally by missing `DATABASE_URL`
+- Local `.env` created (not committed)
+- Temporary SQLite DATABASE_URL was used **only** for internal verification
+- Prisma migrations and DB initialization deferred pending approval
+
+---
+
+## Phase 3 — Expenses & Spending Analysis
+
+### Phase 3.1 — SQL Authoring (P3-01)
+
+**Phase Start Time:** 2026-01-29  
+**Phase End Time:** *Deferred (execution pending)*  
+
+**Scope Summary:**  
+- Authored final-intent SQL for campaign expenses
+- No execution or migration performed
+
+**Primary Files Built:**  
+- `db/sql/008_campaign_expenses.sql`
+
+**Git Commit / Tag:**  
+- SQL authoring commit (see repository history)
+
+**ZIP Artifact:**  
+- Location: `C:\dev\`
+- Filename: `campaign_compliance_phase-3-preP3-02.zip`
+
+**Notes:**  
+- `gen_random_uuid` / `pgcrypto` dependency noted
+- SQL frozen per directive; execution deferred until DB init
+
+---
+
+### Phase 3.2 — Application Build (P3-02 → P3-06)
+
+**Phase Start Time:** 2026-01-29  
+**Phase End Time:** *In progress*  
+
+**Scope Summary:**  
+- Added Prisma expense models (campaign schema)
+- Implemented expenses API (create, list, update)
+- Implemented validation and status transitions
+- Built expense list and detail UI
+- Built spending analysis API, lib, and UI
+- SQL intentionally frozen; all logic implemented at app layer
+
+**Primary Files Built:**  
+- `db/prisma/schema.prisma` (Phase 3 models)
+- `apps/campaign_compliance/app/api/expenses/*`
+- `apps/campaign_compliance/app/expenses/*`
+- `apps/campaign_compliance/lib/analysis.ts`
+- `apps/campaign_compliance/lib/validators.ts`
+
+**Git Commit / Tag:**  
+- See commits with prefix `feat(phase-3):`
+
+**ZIP Artifact:**  
+- Location: `C:\dev\`
+- Filename: `campaign_compliance_phase-3-preP3-07.zip`
+
+**Notes:**  
+- Expense wizard intentionally deferred
+- Travel-sourced expense lock enforced
+- Analysis endpoints are deterministic and audit-friendly
+
