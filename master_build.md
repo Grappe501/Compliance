@@ -16,6 +16,31 @@
 
 ---
 
+
+## REQUIRED PATHS (plan_guard)
+
+The plan guard enforces that required files/folders exist exactly as referenced in this plan.
+
+In addition to the build-step paths listed throughout the phases, the following **create-next-app baseline artifacts** are treated as **required** (they are expected to exist in a standard Next.js 14 App Router + Tailwind scaffold under `apps/campaign_compliance/` and must not be flagged as drift):
+
+- `apps/campaign_compliance/.eslintrc.json`
+- `apps/campaign_compliance/.gitignore`
+- `apps/campaign_compliance/app/favicon.ico`
+- `apps/campaign_compliance/app/fonts/GeistMonoVF.woff`
+- `apps/campaign_compliance/app/fonts/GeistVF.woff`
+- `apps/campaign_compliance/app/globals.css`
+- `apps/campaign_compliance/app/layout.tsx`
+- `apps/campaign_compliance/components/NavBar.tsx`
+- `apps/campaign_compliance/components/PageShell.tsx`
+- `apps/campaign_compliance/next-env.d.ts`
+- `apps/campaign_compliance/next.config.mjs`
+- `apps/campaign_compliance/postcss.config.mjs`
+- `apps/campaign_compliance/tailwind.config.ts`
+- `apps/campaign_compliance/tsconfig.json`
+
+> Note: If any of these are intentionally removed or renamed, the plan must be updated first (otherwise plan_guard will correctly report drift).
+
+
 ## Locked SOS export schema (DO NOT EDIT)
 These arrays are the single source of truth for CSV column names and order.
 
@@ -144,11 +169,68 @@ At the end of every step:
 
 ---
 
+
+# PHASE G — Governance + Plan Guard (FOUNDATION)
+**Build Status:** IN_PROGRESS
+
+## Phase G outcome
+The repo can audit itself against the canonical plan and enforce “no drift” rules.
+
+## PG-01 — Plan Guard script exists and runs
+**Status:** DONE
+
+**Files**
+- `scripts/plan_guard.js`
+
+**Acceptance**
+- `node scripts/plan_guard.js` runs and reports:
+  - missing required paths (OFF-PLAN)
+  - extra unplanned paths (DRIFT)
+  - manifest written to `.plan_guard/manifest.json`
+
+**Commit**
+- `chore(governance): plan_guard`
+
+---
+
+## PG-02 — Protocols + Phase checklists exist
+**Status:** DONE
+
+**Files**
+- `PROTOCOLS.md`
+- `PHASE_1_FILELIST.md`
+
+**Acceptance**
+- Files exist at repo root and define “full-file only / one file at a time / no drift” rules.
+
+**Commit**
+- `docs(governance): protocols + phase checklists`
+
+---
+
+## PG-03 — Plan Guard alignment: required baseline artifacts + drift resolution
+**Status:** IN_PROGRESS
+
+**Goal**
+- Update the plan’s “REQUIRED PATHS (plan_guard)” so create-next-app baseline artifacts are not treated as drift.
+- Remove or document any remaining unplanned files under watched roots.
+
+**Acceptance**
+- `node scripts/plan_guard.js` reports:
+  - ✅ none missing required paths
+  - ✅ no drift OR drift explicitly documented in this plan
+
+**Commit**
+- `chore(governance): plan_guard alignment`
+
+
+---
+
 # PHASE 1 — App shell + DB wiring + progress map (MICRO)
-**Build Status:** NOT_STARTED
+**Build Status:** IN_PROGRESS
 
 ## P1-01 — Create app skeleton
-**Status:** NOT_STARTED  
+**Status:** DONE  
 **Do**
 1) From repo root:
    - `npx create-next-app@14 apps/campaign_compliance --ts --tailwind --eslint --app --src-dir=false --import-alias "@/*"`
@@ -163,7 +245,7 @@ At the end of every step:
 ---
 
 ## P1-02 — Mirror baseline conventions from public_site
-**Status:** NOT_STARTED  
+**Status:** DONE  
 **Do**
 1) Copy these files from `apps/public_site` into `apps/campaign_compliance` (adjust paths as needed):
    - `tailwind.config.ts`
@@ -256,7 +338,7 @@ At the end of every step:
 ---
 
 ## P1-07 — Create campaign schema SQL (idempotent)
-**Status:** NOT_STARTED  
+**Status:** DONE  
 **Create**
 - `db/sql/006_campaign_schema.sql`
 
@@ -359,7 +441,7 @@ Fields:
 **Parsing rules**
 - Phase header: `# PHASE`
 - Step header: `## P`
-- Step status line: `**Status:** X`
+- Step status line: `**Status:** NOT_STARTED`
 - Build status line: `**Build Status:** X`
 
 **Output JSON**
