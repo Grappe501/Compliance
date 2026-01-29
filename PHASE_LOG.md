@@ -168,3 +168,36 @@ If a phase is not recorded here, it is **not considered complete**.
 - Travel-sourced expense lock enforced
 - Analysis endpoints are deterministic and audit-friendly
 
+---
+
+## Phase 3 — Expenses & Spending Analysis (FORMALLY CLOSED)
+
+**Phase Start Time:** 2026-01-29  
+**Phase End Time:** 2026-01-29  
+
+**Scope Summary:**  
+- Completed Phase 3 expenses subsystem (Prisma models, API, validation, UI)
+- Completed spending analysis (API + UI)
+- SQL authored but frozen; no execution performed
+- Plan + phase log reconciled and normalized; plan_guard confirmed ON-PLAN
+
+**Primary Files Built:**  
+- `db/prisma/schema.prisma`
+- `apps/campaign_compliance/app/api/expenses/*`
+- `apps/campaign_compliance/app/expenses/*`
+- `apps/campaign_compliance/lib/analysis.ts`
+- `apps/campaign_compliance/lib/validators.ts`
+- `master_build.md`
+- `PHASE_LOG.md`
+- `.plan_guard/manifest.json`
+
+**Git Commit / Tag:**  
+- Commit: `<PASTE git rev-parse HEAD HERE>`
+
+**ZIP Artifact:**  
+- Location: `C:\dev\`
+- Filename: `campaign_compliance_phase-3-closed.zip`
+
+**Notes:**  
+- SQL frozen per directive; execution deferred until DB init approval
+- Expense wizard is implemented; any future refinements require a Phase 3.x extension or Phase 4 scope
