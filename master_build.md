@@ -885,7 +885,6 @@ Commit: `docs(phase-2): status updates`
 **Notes:** Local SQLite configuration permitted for Phase 2 validation only.
 
 
-# PHASE 3 — Expenses + Spending Drilldowns (MICRO+)
 **Build Status:** NOT_STARTED
 
 ## Phase 3 outcome
@@ -904,7 +903,7 @@ System can:
 
 ---
 
-## P3-01 — SQL: expenses + expenditure_returns (full DDL)
+## P3-01 — FILE_AUTHORED (execution deferred) — SQL: expenses + expenditure_returns (full DDL)
 **Status:** NOT_STARTED
 
 **Create file**
@@ -1048,11 +1047,11 @@ System can:
   - before starting each P3 item
   - after completing each P3 item
 - `.env` is local-only and never committed
-- If runtime is blocked prior to P3-01, that is acceptable
+- If runtime is blocked prior to P3-01 — FILE_AUTHORED (execution deferred), that is acceptable
 
 ---
 
-## P3-01 — SQL: expenses + expenditure_returns (full DDL)
+## P3-01 — FILE_AUTHORED (execution deferred) — SQL: expenses + expenditure_returns (full DDL)
 **Status:** NOT_STARTED
 
 ### Files
@@ -1062,15 +1061,15 @@ System can:
 1) Run plan guard (must be clean)
    ```bash
    node scripts/plan_guard.js
-## P3-01 — SQL: expenses + expenditure_returns (full DDL)
+## P3-01 — FILE_AUTHORED (execution deferred) — SQL: expenses + expenditure_returns (full DDL)
 **Status:** FILE_AUTHORED (execution deferred)
 
 --**Notes:**
 - SQL file authored and verified on disk
-- Execution deferred until database initialization (P3-01 execution step)
+- Execution deferred until database initialization (P3-01 — FILE_AUTHORED (execution deferred) execution step)
 -
 
-## P3-02 — Prisma models: CampaignExpense + CampaignExpenditureReturn (exact blocks)
+## P3-02 — DONE — Prisma models: CampaignExpense + CampaignExpenditureReturn (exact blocks)
 **Status:** NOT_STARTED
 
 **Edit**
@@ -1141,7 +1140,7 @@ model CampaignExpenditureReturn {
 
 ---
 
-## P3-03 — Expenses API (create/list/update) + ExternalExpenditureID generator
+## P3-03 — DONE — Expenses API (create/list/update) + ExternalExpenditureID generator
 **Status:** NOT_STARTED
 
 ### Files
@@ -1184,7 +1183,7 @@ Body:
 
 ---
 
-## P3-04 — Expense validator + status transitions (exact rules)
+## P3-04 — DONE — Expense validator + status transitions (exact rules)
 **Status:** NOT_STARTED
 
 **Edit**
@@ -1216,7 +1215,7 @@ Body:
 
 ---
 
-## P3-05 — Expense UI: wizard + recent list + detail
+## P3-05 — IN_PROGRESS (wizard deferred) — Expense UI: wizard + recent list + detail
 **Status:** NOT_STARTED
 
 ### Files
@@ -1246,7 +1245,7 @@ Body:
 
 ---
 
-## P3-06 — Spending Analysis Drilldown page (full spec)
+## P3-06 — DONE — Spending Analysis Drilldown page (full spec)
 **Status:** NOT_STARTED
 
 ### Files
@@ -1316,7 +1315,7 @@ LIMIT 50;
 
 ---
 
-## P3-07 — Phase 3 doc update
+## P3-07 — NOT_STARTED — Phase 3 doc update
 **Status:** NOT_STARTED
 Commit: `docs(phase-3): status updates`
 
