@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-02-05T18:18:55.672Z",
+  "generatedAt": "2026-02-05T18:37:24.119Z",
   "repoRoot": "C:\\Users\\User\\Desktop\\Compliance\\Compliance",
   "plan": "master_build.md",
   "planHash": "ba9fba6eb094b9478fe0a71ea8829bcbaaf9b81f63cefbaad2581e1cd03c9277",
@@ -208,5 +208,7 @@
     "scripts/plan_guard.js"
   ],
   "missingPaths": [],
-  "extraPaths": []
+  "extraPaths": [
+    "scripts/make_overlay_zip.ps1"
+  ]
 }
