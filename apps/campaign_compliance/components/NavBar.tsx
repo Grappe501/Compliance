@@ -2,13 +2,12 @@ import Link from "next/link";
 
 const nav = [
   { href: "/", label: "Home" },
-  { href: "/imports/fundraising", label: "Import" },
   { href: "/contributions", label: "Contributions" },
   { href: "/expenses", label: "Expenses" },
   { href: "/travel", label: "Travel" },
   { href: "/filing", label: "Filing" },
-  { href: "/candidate", label: "Candidate" },
   { href: "/settings", label: "Settings" },
+  { href: "/build-map", label: "Build Map" },
 ];
 
 export default function NavBar() {

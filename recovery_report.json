@@ -1,0 +1,67 @@
+﻿{
+    "scannedFrom":  "C:\\Users\\User\\Desktop\\Compliance",
+    "selectedRepoRoot":  "C:\\Users\\User\\Desktop\\Compliance\\Compliance",
+    "repoRootCandidates":  [
+                               {
+                                   "Path":  "C:\\Users\\User\\Desktop\\Compliance\\Compliance",
+                                   "Score":  105,
+                                   "HasGit":  true,
+                                   "HasPlan":  true,
+                                   "HasPlanGuard":  true,
+                                   "HasApps":  true,
+                                   "HasDb":  true
+                               },
+                               {
+                                   "Path":  "C:\\Users\\User\\Desktop\\Compliance",
+                                   "Score":  30,
+                                   "HasGit":  false,
+                                   "HasPlan":  true,
+                                   "HasPlanGuard":  false,
+                                   "HasApps":  true,
+                                   "HasDb":  false
+                               }
+                           ],
+    "nestedRepoCandidates":  {
+
+                             },
+    "foundTopLevelNames":  [
+                               ".git",
+                               ".plan_guard",
+                               "apps",
+                               "db",
+                               "overlays",
+                               "public",
+                               "public_site",
+                               "scripts",
+                               ".gitignore",
+                               "master_build.md",
+                               "master_build.md.bak",
+                               "master_build.updated.md",
+                               "MASTER_BUILD_DIRECTIONS.md",
+                               "package.json",
+                               "PHASE_1_FILELIST.md",
+                               "PHASE_1_FILE_AUDIT.csv",
+                               "PHASE_1_GIT_TRACKED.txt",
+                               "PHASE_1_SUMMARY.txt",
+                               "PHASE_1_TRACKED_ZERO_BYTES.csv",
+                               "PHASE_1_TRACKED_ZERO_BYTES_SUMMARY.txt",
+                               "PHASE_1_TREE.txt",
+                               "PHASE_2_FILELIST.md",
+                               "PHASE_4_FILELIST.md",
+                               "PHASE_LOG.md",
+                               "PHASE_Z00_FILELIST.md",
+                               "PHASE_Z02_FILELIST.md",
+                               "PROTOCOLS.md"
+                           ],
+    "expectedTopLevelNames":  [
+                                  "apps",
+                                  "db",
+                                  "scripts",
+                                  "public",
+                                  ".plan_guard"
+                              ],
+    "backupSuggestion":  "C:\\Users\\User\\Desktop\\Compliance\\Compliance\\_SAFETY_BACKUP_20260205_134036",
+    "planMoves":  [
+
+                  ]
+}

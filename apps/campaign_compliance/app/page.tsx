@@ -3,33 +3,35 @@ import PrimaryActionCard from "@/components/PrimaryActionCard";
 
 export default function Page() {
   return (
-    <PageShell title="Campaign Compliance">
-      <p className="mt-2 text-sm text-gray-600">
-        Enter contributions and expenses, track mileage, then download SOS-ready files.
-      </p>
+    <PageShell>
+      <div className="mb-4">
+        <h1 className="text-2xl font-semibold tracking-tight text-gray-900">
+          Campaign Compliance
+        </h1>
+        <p className="mt-1 text-sm text-gray-600">
+          Track money, travel, and filing outputs in one place.
+        </p>
+      </div>
 
-      <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2">
         <PrimaryActionCard
-          title="Add Contribution"
-          description="Record a campaign contribution."
-          href="/contributions/new"
+          title="Contributions"
+          description="Enter, review, and export contributions."
+          href="/contributions"
         />
-
         <PrimaryActionCard
-          title="Add Expense"
-          description="Record a campaign expense."
-          href="/expenses/new"
+          title="Expenses"
+          description="Track expenditures and run spending analysis."
+          href="/expenses"
         />
-
         <PrimaryActionCard
-          title="Travel Log"
-          description="Track mileage and travel reimbursement."
-          href="/travel/timeline"
+          title="Travel"
+          description="Build compliant trip logs and reimbursements."
+          href="/travel"
         />
-
         <PrimaryActionCard
-          title="Prepare Filing"
-          description="Review records and export SOS-ready files."
+          title="Filing"
+          description="Preflight checks and SOS-ready exports."
           href="/filing"
         />
       </div>
